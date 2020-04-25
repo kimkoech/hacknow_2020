@@ -13,6 +13,15 @@ def test_post():
 
 # Function to add data to database
 def add_data():
+	story = {
+		"name": "Dong Hur",
+		"lat": 0,
+		"long": 0,
+		"story": "Here is a long story about my experience with coronavrius!",
+		"category": "physician",
+		"timestamp": "4-25-2020"
+	}
+	db.child("story").push(story)
 	return "To do"
 
 
@@ -23,3 +32,6 @@ def remove_data():
 # Function to retrieve data from database
 def retrieve():
 	return "To do"
+
+if __name__ == '__main__':
+	add_data()

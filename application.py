@@ -23,7 +23,7 @@ def index():
 
 @app.route('/')
 def viewHTLM():
-    return render_template('page2.html')
+    return render_template('page.html')
 
 # send a message from the url bar and rendering a page
 
