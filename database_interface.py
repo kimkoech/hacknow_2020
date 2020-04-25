@@ -7,18 +7,12 @@ firebase = pyrebase.initialize_app(config)
 db = firebase.database()
 
 # Function to add data to database
-# story = {
-	# 	"name": "Dong Hur",
-	# 	"lat": 0,
-	# 	"long": 0,
-	# 	"story": "Here is a long story about my experience with coronavrius!",
-	# 	"category": "physician",
-	# 	"timestamp": "4-25-2020"
-	# }
-def post_story(story):
-	db.child("story").push(story)
-	return
 
+# post request
+def post_story(story):
+	result = db.child("story").push(story)
+	return result
+# get request
 def get_stories():
 	data = db.child("story").get()
 	return json.dumps(data.val())
@@ -28,5 +22,13 @@ def get_story(id):
 
 if __name__ == '__main__':
 	# add_data()
-	data = get_story("-M5moQ2fCQO8cRJsMow7")
+	story = {
+		"name": "Dong Hur",
+		"lat": 0,
+		"long": 0,
+		"story": "Here is a long story about my experience with coronavrius!",
+		"category": "physician",
+		"timestamp": "4-25-2020"
+	}
+	data = post_story(story)
 	print(data)
