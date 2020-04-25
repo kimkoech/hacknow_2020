@@ -63,7 +63,7 @@ def newPost():
                         "Status": "Posted to flask successfully"})
         
     else:
-        # was GET or the credentials were invalid
+        # rended new post page
         return render_template('new_post.html')
 
 
