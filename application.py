@@ -32,4 +32,4 @@ def sendToHTLM(message=None):
     return render_template('page.html', input_message=message)
         
 
-app.run(host='0.0.0.0', port= 8090)
+app.run(debug=True)
