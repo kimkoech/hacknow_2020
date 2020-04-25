@@ -8,9 +8,13 @@ from database_interface import test_post, retrieve
 # instatiate flask
 app = Flask(__name__)
 
+# @app.route('/')
+# def viewHTLM():
+#     return render_template('page.html')
+
 @app.route('/')
-def viewHTLM():
-    return render_template('page.html')
+def home():
+    return render_template('homepage.html')
     
 # display a post
 @app.route('/<post_id>')
