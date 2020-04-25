@@ -9,6 +9,6 @@ db = firebase.database()
 app = Flask(__name__)
 
 def test_post():
-	db.child("todo").push("Here is one entry")
+	db.child("todo").push("Here is another entry")
 	todo = db.child("todo").get()
 	return todo.val()
