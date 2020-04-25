@@ -32,4 +32,4 @@ def sendToHTLM(message=None):
     return render_template('page.html', input_message=message)
         
 
-app.run(debug=True)
+# app.run(debug=True)
