@@ -1,6 +1,7 @@
 import os
 import pyrebase
 from config import config
+import json
 
 firebase = pyrebase.initialize_app(config)
 db = firebase.database()
@@ -31,7 +32,10 @@ def remove_data():
 
 # Function to retrieve data from database
 def retrieve():
-	return "To do"
+	data = db.child("story").get()
+	return data
 
 if __name__ == '__main__':
-	add_data()
+	# add_data()
+	data = retrieve()
+	print(json.dumps(data.val()))
