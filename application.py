@@ -1,7 +1,7 @@
 # import modules
 from flask import Flask, jsonify, request, render_template
 # import local modules
-from database_interface import test_post
+from database_interface import test_post, retrieve
 
 #confession = DB.get_confession
 

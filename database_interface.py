@@ -30,7 +30,7 @@ def remove_data():
 	return "To do"
 
 # Function to retrieve data from database
-def retrieve():
+def retrieve(post_id):
 	return "To do"
 
 if __name__ == '__main__':
