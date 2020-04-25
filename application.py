@@ -36,7 +36,7 @@ def sendToHTLM(message=None):
     return render_template('page.html', input_message=message)
 
 
-# getting form data
+# getting form data eg login form
 @app.route('/login', methods=['POST', 'GET'])
 def login():
     if request.method == 'POST':
@@ -47,6 +47,24 @@ def login():
     else:
         # was GET or the credentials were invalid
         return render_template('login.html')
+
+
+# getting form data eg a post
+@app.route('/new_post', methods=['POST', 'GET'])
+def newPost():
+    if request.method == 'POST':
+        # get username ad password
+        firstName = request.form['fname']
+        lastName = request.form['lname']
+        posted_data = request.form['post']
+        return jsonify({"First name": firstName,
+                        "Last name": lastName,
+                        "Post": posted_data,
+                        "Status": "Posted to flask successfully"})
+        
+    else:
+        # was GET or the credentials were invalid
+        return render_template('new_post.html')
 
 
 app.run(host='0.0.0.0', port=8090)
