@@ -8,40 +8,14 @@ from database_interface import test_post
 # instatiate flask
 app = Flask(__name__)
 
-# handling post and get requests
-@app.route('/index', methods=["GET", "POST"])
-def index():
-    if request.method == 'GET':
-        print("Index page")
-        # this message will be displayed
-        return jsonify({ "Page": "Index page"})
-    else:
-        return 'POST request received'
-
-# rending a HTLM page . NOTE: the HTML files are in the template folder
-
-
 @app.route('/')
 def viewHTLM():
     return render_template('page.html')
-
-# send a message from the url bar and rendering a page
-
-@app.route('/<message>')
-def sendToHTLM(message=None):
-    return render_template('page.html', input_message=message)
-
-# getting form data eg login form
-@app.route('/login', methods=['POST', 'GET'])
-def login():
-    if request.method == 'POST':
-        # get username ad password
-        username = request.form['uname']
-        password = request.form['psw']
-        return 'message received successfully' + username + password
-    else:
-        # was GET or the credentials were invalid
-        return render_template('login.html')
+    
+# display a post
+@app.route('/<post_id>')
+def displayPost(post_id):
+    return render_template('post.html', post_data=retrieve(post_id))
 
 # getting form data eg a post
 @app.route('/new_post', methods=['POST', 'GET'])
