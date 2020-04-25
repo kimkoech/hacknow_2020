@@ -1,21 +1,21 @@
 # import modules
 from flask import Flask, jsonify, request, render_template
 # import local modules
-from database_interface import test_post
+from database_interface import test_post, retrieve
 
 #confession = DB.get_confession
 
 # instatiate flask
 app = Flask(__name__)
 
-# rending a HTLM page . NOTE: the HTML files are in the template folder
 @app.route('/')
 def viewHTLM():
     return render_template('page.html')
-
-@app.route('/<message>')
-def sendToHTLM(message=None):
-    return render_template('story.html', input_message=message)
+    
+# display a post
+@app.route('/<post_id>')
+def displayPost(post_id):
+    return render_template('post.html', post_data=retrieve(post_id))
 
 # getting form data eg a post
 @app.route('/new_post', methods=['POST', 'GET'])
