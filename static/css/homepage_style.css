@@ -19,6 +19,30 @@ body {
   border-radius: 50%;
   cursor: pointer;
 }
+.greenmarker {
+  background-image: url('img/green-dot.png');
+  background-size: cover;
+  width: 11px;
+  height: 11px;
+  border-radius: 90%;
+  cursor: pointer;
+}
+.yellowmarker {
+  background-image: url('img/yellow-dot.png');
+  background-size: cover;
+  width: 11px;
+  height: 11px;
+  border-radius: 90%;
+  cursor: pointer;
+}
+.bluemarker {
+  background-image: url('img/blue-dot.png');
+  background-size: cover;
+  width: 11px;
+  height: 11px;
+  border-radius: 90%;
+  cursor: pointer;
+}
 .mapboxgl-popup {
   max-width: 200px;
 }

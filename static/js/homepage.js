@@ -11,7 +11,13 @@ var map = new mapboxgl.Map({
 $.each(data, function(idx, story){
   // create a HTML element for each feature
   var el = document.createElement('div');
-  el.className = 'marker';
+  //el.className = 'marker';
+  if (story.category == "personal") { el.className = 'greenmarker';}
+  else if (story.category == "medical") { el.className = 'marker';}
+  else if (story.category == "family") { el.className = 'yellowmarker';}
+  else { el.className = 'bluemarker';}
+  //else { el.className = 'marker';}
+  
   var tooltip = `<div class='tooltip'><h1>${story.name}</h1><p class='tooltip-paragraph'>${truncateText(story.story,250)}</p>
   <a href='/post/${idx}' class='tooltip-link'>Read More</a></div>`
   var marker = new mapboxgl.Marker(el)
