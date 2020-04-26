@@ -15,6 +15,12 @@ def home():
     data = DB.get_stories()
     return render_template('homepage.html', data=data)
 
+@app.route('/post/<story_id>')
+def post(story_id):
+    data = DB.get_story(story_id)
+    jsonData = json.loads(data)
+    return render_template('post.html', post_data=jsonData)
+
 # making a new post
 @app.route('/new_post', methods=['POST', 'GET'])
 def newPost():
