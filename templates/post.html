@@ -1,31 +1,62 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
+<!--
+	Dimension by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
 <html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="{{ url_for('static', filename='css/post.css') }}" rel='stylesheet' />
-</head>
-<body>
-  <div class="container">
-    <h1>{{ post_data.name }}</h1>
-  </div>
-  <!-- <div class="row">
-    <div class="leftcolumn">
-      <div class="card">
-        <p>{{ post_data.name }}</p>
-        <h5>{{ post_data.timestamp }}</h5>
-        <div class="fakeimg" style="height:200px;">Image</div>
-        <p>{{ post_data.story }}
-        </p>
-      </div>
-    </div>
-  </div> -->
 
+<head>
+  <title>Share</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="/static/new_post_assets/css/main.css" />
+  <noscript>
+    <link rel="stylesheet" href="/static/new_post_assets/css/noscript.css" /></noscript>
+</head>
+
+<body class="is-preload">
+
+  <!-- Wrapper -->
+  <div id="wrapper">
+
+    <!-- Header -->
+    <header id="header">
+    </header>
+
+    <div class="box" style="width: 50%;">
+      <!-- Display data -->
+      <h2 class="major"> {{ post_data.name }} </h2>
+      <h2>Category: {{ post_data.category }} </h2>
+      <blockquote>{{ post_data.story }}</blockquote>
+      <a href="/" class="button primary">BACK HOME</a>
+    </div>
+
+
+    <!-- Footer -->
+    <footer id="footer">
+      <p class="copyright">&copy; COVID-19 STORIES. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+    </footer>
+
+  </div>
+
+  <!-- BG -->
+  <div id="bg"></div>
+
+  <!-- Scripts -->
   {% block javascript %}
-    <script>
-      post_data = JSON.parse({{ post_data | tojson | safe }});
-      console.log(post_data)
-    </script>
+  <script>
+    post_data = JSON.parse({{ post_data | tojson | safe }});
+    console.log(post_data)
+  </script>
   {% endblock %}
-  <script src="{{ url_for('static', filename='js/post.js') }}"></script>
+  <script src="/static/new_post_assets/js/jquery.min.js"></script>
+  <script src="/static/new_post_assets/js/browser.min.js"></script>
+  <script src="/static/new_post_assets/js/breakpoints.min.js"></script>
+  <script src="/static/new_post_assets/js/util.js"></script>
+  <script src="/static/new_post_assets/js/main.js"></script>
+
+
 </body>
+
 </html>
