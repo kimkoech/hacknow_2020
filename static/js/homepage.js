@@ -27,9 +27,11 @@ $.each(data, function(idx, story){
   var markerDiv = marker.getElement();
   var popup = marker.getPopup();
   markerDiv.addEventListener('mouseenter', () => popup.addTo(map));
+  popup.addEventListener('mouseenter', () => popup.addTo(map));
   markerDiv.addEventListener('mouseleave', () => popup.remove());
+  popup.addEventListener('mouseleave', () => popup.remove());
   // markerDiv.addEventListener('click', () =>{window.location.href = "/post/"+idx});
-  markerDiv.addEventListener('click', () => map.flyTo({ center: [story.lat, story.long], zoom: 12}))
+  markerDiv.addEventListener('click', () => map.flyTo({ center: [story.lat, story.long], zoom: 12}));
 })
 
 // const marker = new mapboxgl.Marker({/* options */});
