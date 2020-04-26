@@ -28,6 +28,8 @@ $.each(data, function(idx, story){
   var popup = marker.getPopup();
   markerDiv.addEventListener('mouseenter', () => popup.addTo(map));
   markerDiv.addEventListener('mouseleave', () => popup.remove());
+  markerDiv.addEventListener('click', () => map.flyTo({ center: [story.lat, story.long], zoom: 12}))
+  // Center the map on the coordinates of any clicked symbol from the 'symbols' layer.
 })
 
 // const marker = new mapboxgl.Marker({/* options */});
