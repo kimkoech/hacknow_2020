@@ -12,7 +12,7 @@ $.each(data, function(idx, story){
   // create a HTML element for each feature
   var el = document.createElement('div');
   el.className = 'marker';
-  var tooltip = `<div class='tooltip'><h1>${story.name}</h1><p>${story.story}</p>
+  var tooltip = `<div class='tooltip'><h1>${story.name}</h1><p class='tooltip-paragraph'>${truncateText(story.story,300)}</p>
   <a href='/post/${idx}' class='tooltip-link'>Read More</a></div>`
   var marker = new mapboxgl.Marker(el)
     .setLngLat([story.lat, story.long])
@@ -37,6 +37,14 @@ $.each(data, function(idx, story){
   markerDiv.addEventListener('click', () => map.flyTo({ center: [story.lat, story.long], zoom: 12}));
   document.addEventListener('keypress', () => map.flyTo({ center: [story.lat, story.long], zoom: 3}));
 })
+
+function truncateText(text, maxLength) {
+    var truncated = text
+    if (text.length > maxLength) {
+        truncated = text.substr(0,maxLength) + '...';
+    }
+    return truncated;
+}
 
 // const marker = new mapboxgl.Marker({/* options */});
 // const markerDiv = marker.getElement();
