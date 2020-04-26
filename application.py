@@ -46,12 +46,15 @@ def newPost():
         # jsonify story
         firstName = request.form['fname']
         lastName = request.form['lname']
-        # category = request.form['category']
+        category = request.form['category']
         story = request.form['message']
+        title = request.form['title']
         story_json = {"name": firstName + " " + lastName,
         "lat": lat,"long": long,
         "story": story,
-        "timestamp": str(datetime.now())}
+        "category": category,
+        "timestamp": str(datetime.now()),
+        "title" : title}
         # show post
         post_id = DB.post_story(story_json)
         data = DB.get_story(post_id)

@@ -35,7 +35,7 @@ $.each(data, function(idx, story){
     popup.remove();
   });
   markerDiv.addEventListener('click', () => map.flyTo({ center: [story.lat, story.long], zoom: 12}));
-  document.addEventListener('keypress', () => map.flyTo({ center: [story.lat, story.long], zoom: 3}));
+  document.addEventListener('keypress', () => map.flyTo({ center: [story.lat, story.long], zoom: 2}));
 })
 
 function truncateText(text, maxLength) {

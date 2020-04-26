@@ -32,47 +32,46 @@
                 } -->
                 <a href="\" class="button" style="left:50px; top=30px; font-size:30px; position:absolute; border-color:black;">
                     &#8678;</a>
-
-                <div class="box" style="width: 70%; margin-top:80px">
-                        <!-- New Post-->
-                            <article >
-                                <h2 class="major">SHARE</h2>
-                                <form method="post" action="new_post">
-                                    <div class="fields">
-                                        <div class="field half">
-                                            <label for="fname">First Name</label>
-                                            <input type="text" name="fname" id="fname" />
-                                        </div>
-                                        <div class="field half">
-                                            <label for="lname">Last Name</label>
-                                            <input type="text" name="lname" id="lname" />
-                                        </div>
-                                        <div class="field">
-                                            <label for="title">Title</label>
-                                            <input type="text" name=title id="title" />
-                                        </div>
-                                        <div class="field">
-                                            <label for="demo-category">Category</label>
-                                            <select name="demo-category" id="demo-category">
-                                                <option value="">-</option>
-                                                <option value="1">Personal</option>
-                                                <option value="1">Family</option>
-                                                <option value="1">Medical</option>
-                                                <option value="1">Other</option>
-                                            </select>
-                                        </div>
-                                        <div class="field">
-                                            <label for="message">Story</label>
-                                            <textarea name="message" id="message" rows="4"></textarea>
-                                        </div>
-                                    </div>
-                                    <ul class="actions">
-                                        <li><input type="submit" value="submit" class="primary" /></li>
-                                        <li><input type="reset" value="Reset" /></li>
-                                    </ul>
-                                </form>
-                            </article>
-                    </div>
+				<div class="box" style="width: 70%; margin-top:80px">
+						<!-- New Post-->
+							<article >
+								<h2 class="major">SHARE</h2>
+								<form method="post" action="new_post">
+									<div class="fields">
+										<div class="field half">
+											<label for="fname">First Name</label>
+											<input type="text" name="fname" id="fname" />
+										</div>
+										<div class="field half">
+											<label for="lname">Last Name</label>
+											<input type="text" name="lname" id="lname" />
+										</div>
+										<div class="field">
+											<label for="title">Title</label>
+											<input type="text" name=title id="title" />
+										</div>
+										<div class="field">
+											<label for="category">Category</label>
+											<select name="category" id="category">
+												<option value="-">-</option>
+												<option value="Personal">Personal</option>
+												<option value="Family">Family</option>
+												<option value="Medical">Medical</option>
+												<option value="Other">Other</option>
+											</select>
+										</div>
+										<div class="field">
+											<label for="message">Story</label>
+											<textarea name="message" id="message" rows="4"></textarea>
+										</div>
+									</div>
+									<ul class="actions">
+										<li><input type="submit" value="submit" class="primary" /></li>
+										<li><input type="reset" value="Reset" /></li>
+									</ul>
+								</form>
+							</article>
+					</div>
 
                 <!-- Footer -->
                     <footer id="footer">
@@ -83,21 +82,8 @@
         <!-- BG -->
             <div id="bg"></div>
 
-            <script src="/static/new_post_assets/js/jquery.min.js"></script>
-            {% block javascript %}
-              <script>
-                $.getJSON("https://api.ipify.org/?format=json", function(e) {
-                  $.getJSON(`https://ipapi.co/${e.ip}/json`, function(data){
-                      console.log(data)
-                  });
-                });
-              </script>
-              {% endblock %}
-
-            
-
         <!-- Scripts -->
-            
+            <script src="/static/new_post_assets/js/jquery.min.js"></script>
             <script src="/static/new_post_assets/js/browser.min.js"></script>
             <script src="/static/new_post_assets/js/breakpoints.min.js"></script>
             <script src="/static/new_post_assets/js/util.js"></script>
