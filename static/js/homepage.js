@@ -13,12 +13,22 @@ $.each(data, function(idx, story){
   var el = document.createElement('div');
   el.className = 'marker';
   // make a marker for each feature and add to the map
-  new mapboxgl.Marker(el)
+  var marker = new mapboxgl.Marker(el)
     .setLngLat([story.lat, story.long])
     .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
     .setHTML('<h3>' + story.name + '</h3><p>' + story.story + '</p>'))
     .addTo(map);
+
+  var markerDiv = marker.getElement();
+  markerDiv.addEventListener('mouseenter', () => marker.togglePopup());
+  markerDiv.addEventListener('mouseleave', () => marker.togglePopup());
 })
+
+// const marker = new mapboxgl.Marker({/* options */});
+// const markerDiv = marker.getElement();
+
+// markerDiv.addEventListener('mouseenter', () => marker.togglePopup());
+// markerDiv.addEventListener('mouseleave', () => marker.togglePopup());
 
 // TESTING
 // var geojson = {
