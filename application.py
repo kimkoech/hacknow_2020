@@ -13,6 +13,12 @@ app = Flask(__name__)
 @app.route('/')
 def home():
     data = DB.get_stories()
+    ip_add1 = request.environ.get('HTTP_X_REAL_IP', request.remote_addr)
+    ip_add2 = request.headers.get('X-Forwarded-For', request.remote_addr)
+    print("This is the ip1 " + str(ip_add1))
+    print("This is the ip2 " + str(ip_add2))
+
+
     return render_template('homepage.html', data=data)
 
 @app.route('/about')
@@ -30,7 +36,9 @@ def post(story_id):
 def newPost():
     if request.method == 'POST':
         # get user IP address and location data
-        ip_add = request.environ['REMOTE_ADDR']
+        #ip_add = request.environ['REMOTE_ADDR']
+        ip_add = request.environ.get('HTTP_X_REAL_IP', request.remote_addr)
+        #ip_add = request.environ['HTTP_X_FORWARDED_FOR']
         print("*********************")
         print(ip_add)
         get_geo_data = requests.get(url='http://ip-api.com/json/' + str(ip_add))
@@ -66,4 +74,4 @@ def newPost():
         
 
 if __name__ == '__main__':
-    app.run(debug=True,host='0.0.0.0', port=8090)
+    app.run(host='0.0.0.0', port=8090)
