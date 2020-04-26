@@ -1,6 +1,7 @@
 # import modules
 from flask import Flask, jsonify, request, render_template, redirect, url_for
 from datetime import datetime
+import requests
 
 # import local modules
 import database_interface as DB
@@ -24,13 +25,25 @@ def post(story_id):
 @app.route('/new_post', methods=['POST', 'GET'])
 def newPost():
     if request.method == 'POST':
+        # get user IP address and location data
+        ip_add = request.environ['REMOTE_ADDR']
+        get_geo_data = requests.get(url='http://ip-api.com/json/' + str(ip_add))
+        location = get_geo_data.json()
+        print(location)
+        try:
+            lat = location['lat']
+            long = location['lon']
+        except:
+            lat = 0
+            long = 0
+
         # jsonify story
         firstName = request.form['fname']
         lastName = request.form['lname']
         category = request.form['category']
         story = request.form['message']
         story_json = {"name": firstName + " " + lastName,
-        "lat": 0,"long": 0,
+        "lat": lat,"long": long,
         "story": story,
         "category": category,
         "timestamp": str(datetime.now())}
@@ -42,6 +55,7 @@ def newPost():
     else:
         # rended new post page
         return render_template('new_post.html')
+        
 
 if __name__ == '__main__':
     app.run(debug=True,host='0.0.0.0', port=8090)
