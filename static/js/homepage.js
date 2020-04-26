@@ -18,8 +18,8 @@ $.each(data, function(idx, story){
   // ).setText(
   //   'Construction on the Washington Monument began in 1848.'
   // )
-  var tooltip = `<div class='tooltip'><h3>${story.name}</h3><p>${story.story}</p>
-  <a href='/post/${idx}'>Read More</a></div>`
+  var tooltip = `<div class='tooltip'><h1>${story.name}</h1><p>${story.story}</p>
+  <a href='/post/${idx}' class='tooltip-link'>Read More</a></div>`
   var marker = new mapboxgl.Marker(el)
     .setLngLat([story.lat, story.long])
     .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
@@ -29,6 +29,7 @@ $.each(data, function(idx, story){
   var markerDiv = marker.getElement();
   var popup = marker.getPopup();
   markerDiv.addEventListener('mouseenter', () => popup.addTo(map));
+  popup.addEventListener('mouseenter', () => popup.addTo(map));
   markerDiv.addEventListener('mouseleave', () => popup.remove());
   // markerDiv.addEventListener('click', () =>{window.location.href = "/post/"+idx});
   markerDiv.addEventListener('click', () => map.flyTo({ center: [story.lat, story.long], zoom: 12}))
