@@ -26,10 +26,20 @@ $.each(data, function(idx, story){
 
   var markerDiv = marker.getElement();
   var popup = marker.getPopup();
-  markerDiv.addEventListener('mouseenter', () => popup.addTo(map));
-  popup.addEventListener('mouseenter', () => popup.addTo(map));
-  markerDiv.addEventListener('mouseleave', () => popup.remove());
-  popup.addEventListener('mouseleave', () => popup.remove());
+  //markerDiv.addEventListener('mouseenter', () => popup.addTo(map));
+  //markerDiv.addEventListener('mouseleave', () => popup.remove());
+  document.addEventListener('mouseenter', event => {
+    if (event.target !== markerDiv && event.target !== popup) {
+      return
+    }
+    popup.addTo(map);
+  });
+  document.addEventListener('mouseleave', event => {
+    if (event.target !== markerDiv && event.target !== popup) {
+      return
+    }
+    popup.remove();
+  });
   // markerDiv.addEventListener('click', () =>{window.location.href = "/post/"+idx});
   markerDiv.addEventListener('click', () => map.flyTo({ center: [story.lat, story.long], zoom: 12}));
 })
