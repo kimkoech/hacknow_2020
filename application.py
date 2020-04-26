@@ -29,8 +29,13 @@ def newPost():
         ip_add = request.environ['REMOTE_ADDR']
         get_geo_data = requests.get(url='http://ip-api.com/json/' + str(ip_add))
         location = get_geo_data.json()
-        lat = location['lat']
-        long = location['lon']
+        print(location)
+        try:
+            lat = location['lat']
+            long = location['lon']
+        except:
+            lat = 0
+            long = 0
 
         # jsonify story
         firstName = request.form['fname']
