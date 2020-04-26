@@ -17,7 +17,7 @@ def home():
 def displayPost(post_id):
     return render_template('post.html', post_data=DB.get_story(post_id))
 
-# getting form data eg a post
+# making a new post
 @app.route('/new_post', methods=['POST', 'GET'])
 def newPost():
     if request.method == 'POST':
