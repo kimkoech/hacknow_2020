@@ -30,12 +30,12 @@ def newPost():
         get_geo_data = requests.get(url='http://ip-api.com/json/' + str(ip_add))
         location = get_geo_data.json()
         print(location)
-        try:
-            lat = location['lat']
-            long = location['lon']
-        except:
+        if (location['status'] != 'success'):
             lat = 0
             long = 0
+        else:
+            lat = location['lat']
+            long = location['lon']
 
         # jsonify story
         firstName = request.form['fname']
