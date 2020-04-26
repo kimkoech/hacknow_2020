@@ -12,10 +12,10 @@ body {
   width: 100%;
 }
 .marker {
-  background-image: url('img/map-marker-icon.png');
+  background-image: url('img/red-dot.png');
   background-size: cover;
-  width: 20px;
-  height: 20px;
+  width: 11px;
+  height: 11px;
   border-radius: 50%;
   cursor: pointer;
 }
