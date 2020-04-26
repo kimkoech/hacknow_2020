@@ -11,7 +11,7 @@ db = firebase.database()
 # post request
 def post_story(story):
 	result = db.child("story").push(story)
-	return result
+	return result['name']
 # get request
 def get_stories():
 	data = db.child("story").get()
