@@ -46,7 +46,7 @@
   <!-- Scripts -->
   {% block javascript %}
   <script>
-    post_data = JSON.parse({{ post_data | tojson | safe }});
+    post_data = {{ post_data | tojson | safe }};
     console.log(post_data)
   </script>
   {% endblock %}
