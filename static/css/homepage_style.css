@@ -78,7 +78,6 @@ body {
 }
 
 #about-button {
-<<<<<<< HEAD
   position:absolute;
   top:91%;
   left:0%;
@@ -108,7 +107,6 @@ body {
   background: #1abc9c;
   color: white;
   font-size: 30px;
-=======
   position: absolute;
   left: 25%;
   width: 800px;
@@ -119,5 +117,4 @@ body {
   vertical-align: middle;
   background: rgba(0,0,0,0.4);
   border-radius: 7px;
->>>>>>> 44f68a6317fd4bf401e1bbc009fc3d3b9c4ed2ee
 }
