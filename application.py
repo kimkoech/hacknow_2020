@@ -9,7 +9,6 @@ app = Flask(__name__)
 @app.route('/')
 def home():
     data = DB.get_stories()
-    print(data)
     return render_template('homepage.html', data=data)
     
 # display a post
