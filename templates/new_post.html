@@ -1,19 +1,77 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
+<!--
+	Dimension by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
 <html>
-<body>
+	<head>
+		<title>Share</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="/static/new_post_assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="/static/new_post_assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
 
-<h2>Share your story</h2>
+		<!-- Wrapper -->
+			<div id="wrapper">
 
-<form action="new_post" id="post_form" method="post">
-  <label for="fname">First name:</label><br>
-  <input type="text" id="fname" name="fname" value="Anonymous"><br><br>
-  <label for="lname">Last name:</label><br>
-  <input type="text" id="lname" name="lname" value="Doe"><br><br>
-  <label for="post">Post:</label><br>
-  <textarea name="post" form="post_form">Enter text here...</textarea><br><br>
-  <input type="submit" value="submit">
-</form> 
-<!-- If you click the "Submit" button, the form-data will be sent to a page called "new_post". -->
+				<!-- Header -->
+					<header id="header">
+					</header>
 
-</body>
+				<div class="box" style="width: 400px;">
+						<!-- New Post-->
+							<article >
+								<h2 class="major">SHARE</h2>
+								<form method="post" action="new_post">
+									<div class="fields">
+										<div class="field half">
+											<label for="fname">First Name</label>
+											<input type="text" name="fname" id="fname" />
+										</div>
+										<div class="field half">
+											<label for="lname">Last Name</label>
+											<input type="text" name="lname" id="lname" />
+										</div>
+										<div class="field">
+											<label for="category">Category</label>
+											<input type="text" name=category id="title" />
+										</div>
+										<div class="field">
+											<label for="message">Story</label>
+											<textarea name="message" id="message" rows="4"></textarea>
+										</div>
+									</div>
+									<ul class="actions">
+										<li><input type="submit" value="submit" class="primary" /></li>
+										<li><input type="reset" value="Reset" /></li>
+									</ul>
+								</form>
+
+							</article>
+					</div>
+
+
+
+				<!-- Footer -->
+					<footer id="footer">
+						<p class="copyright">&copy; COVID-19 STORIES. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+					</footer>
+
+			</div>
+
+		<!-- BG -->
+			<div id="bg"></div>
+
+		<!-- Scripts -->
+			<script src="/static/new_post_assets/js/jquery.min.js"></script>
+			<script src="/static/new_post_assets/js/browser.min.js"></script>
+			<script src="/static/new_post_assets/js/breakpoints.min.js"></script>
+			<script src="/static/new_post_assets/js/util.js"></script>
+			<script src="/static/new_post_assets/js/main.js"></script>
+			
+
+	</body>
 </html>

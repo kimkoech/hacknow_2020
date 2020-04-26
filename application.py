@@ -1,5 +1,7 @@
 # import modules
-from flask import Flask, jsonify, request, render_template
+from flask import Flask, jsonify, request, render_template, redirect, url_for
+from datetime import datetime
+
 # import local modules
 import database_interface as DB
 
@@ -20,18 +22,27 @@ def displayPost(post_id):
 @app.route('/new_post', methods=['POST', 'GET'])
 def newPost():
     if request.method == 'POST':
-        # get username ad password
+        # jsonify story
         firstName = request.form['fname']
         lastName = request.form['lname']
-        posted_data = request.form['post']
-        return jsonify({"First name": firstName,
-                        "Last name": lastName,
-                        "Post": posted_data,
-                        "Status": "Posted to flask successfully"})
+        category = request.form['category']
+        story = request.form['message']
+        story_json = jsonify({"name": firstName + " " + lastName,
+        "lat": 0,"long": 0,
+        "story": story,
+        "category": category,
+        "timestamp": str(datetime.now())})
+        # show post
+        post_id = DB.post_story(story)
+        
+        # redirect to post
+        # return redirect(url_for('/post'), post_id=post_id['name'])
+        return story_json
+
         
     else:
         # rended new post page
         return render_template('new_post.html')
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8090)
+    app.run(debug=True,host='0.0.0.0', port=8090)
