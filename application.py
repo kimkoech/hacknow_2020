@@ -31,6 +31,8 @@ def newPost():
     if request.method == 'POST':
         # get user IP address and location data
         ip_add = request.environ['REMOTE_ADDR']
+        print("*********************")
+        print(ip_add)
         get_geo_data = requests.get(url='http://ip-api.com/json/' + str(ip_add))
         location = get_geo_data.json()
         print(location)
