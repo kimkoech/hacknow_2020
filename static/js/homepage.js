@@ -17,11 +17,13 @@ $.each(data, function(idx, story){
   //   {offset:[28, 0]}
   // ).setText(
   //   'Construction on the Washington Monument began in 1848.'
-  // );
+  // )
+  var tooltip = `<div class='tooltip'><h3>${story.name}</h3><p>${story.story}</p>
+  <a href='/post/${idx}'>Read More</a></div>`
   var marker = new mapboxgl.Marker(el)
     .setLngLat([story.lat, story.long])
     .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
-    .setHTML('<h3>' + story.name + '</h3><p>' + story.story + '</p>'))
+    .setHTML(tooltip))
     .addTo(map);
 
   var markerDiv = marker.getElement();
