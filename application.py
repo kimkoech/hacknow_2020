@@ -4,6 +4,7 @@ from datetime import datetime
 
 # import local modules
 import database_interface as DB
+import json
 
 # instatiate flask
 app = Flask(__name__)
@@ -12,11 +13,6 @@ app = Flask(__name__)
 def home():
     data = DB.get_stories()
     return render_template('homepage.html', data=data)
-    
-# display a post
-@app.route('/post/<post_id>')
-def displayPost(post_id):
-    return render_template('post.html', post_data=DB.get_story(post_id))
 
 # making a new post
 @app.route('/new_post', methods=['POST', 'GET'])
@@ -27,17 +23,16 @@ def newPost():
         lastName = request.form['lname']
         category = request.form['category']
         story = request.form['message']
-        story_json = jsonify({"name": firstName + " " + lastName,
+        story_json = {"name": firstName + " " + lastName,
         "lat": 0,"long": 0,
         "story": story,
         "category": category,
-        "timestamp": str(datetime.now())})
+        "timestamp": str(datetime.now())}
         # show post
-        post_id = DB.post_story(story)
-        return render_template('post.html', post_data=DB.get_story(post_id))
-
-
-        
+        post_id = DB.post_story(story_json)
+        data = DB.get_story(post_id)
+        jsonData = json.loads(data)
+        return render_template('post.html', post_data=jsonData)
     else:
         # rended new post page
         return render_template('new_post.html')
