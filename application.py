@@ -15,6 +15,10 @@ def home():
     data = DB.get_stories()
     return render_template('homepage.html', data=data)
 
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
 @app.route('/post/<story_id>')
 def post(story_id):
     data = DB.get_story(story_id)
