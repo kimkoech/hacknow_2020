@@ -34,10 +34,8 @@ def newPost():
         "timestamp": str(datetime.now())})
         # show post
         post_id = DB.post_story(story)
-        
-        # redirect to post
-        # return redirect(url_for('/post'), post_id=post_id['name'])
-        return story_json
+        return render_template('post.html', post_data=DB.get_story(post_id))
+
 
         
     else:
