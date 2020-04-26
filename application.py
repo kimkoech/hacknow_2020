@@ -31,6 +31,8 @@ def newPost():
     if request.method == 'POST':
         # get user IP address and location data
         ip_add = request.environ['REMOTE_ADDR']
+        print("*********************")
+        print(ip_add)
         get_geo_data = requests.get(url='http://ip-api.com/json/' + str(ip_add))
         location = get_geo_data.json()
         print(location)
@@ -44,12 +46,11 @@ def newPost():
         # jsonify story
         firstName = request.form['fname']
         lastName = request.form['lname']
-        category = request.form['category']
+        # category = request.form['category']
         story = request.form['message']
         story_json = {"name": firstName + " " + lastName,
         "lat": lat,"long": long,
         "story": story,
-        "category": category,
         "timestamp": str(datetime.now())}
         # show post
         post_id = DB.post_story(story_json)
