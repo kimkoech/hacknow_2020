@@ -20,8 +20,8 @@ $.each(data, function(idx, story){
     .addTo(map);
 
   var markerDiv = marker.getElement();
-  markerDiv.addEventListener('mouseenter', () => marker.togglePopup());
-  markerDiv.addEventListener('mouseleave', () => marker.togglePopup());
+  markerDiv.addEventListener('mouseenter', () => marker.addTo(map));
+  markerDiv.addEventListener('mouseleave', () => marker.remove());
 })
 
 // const marker = new mapboxgl.Marker({/* options */});
