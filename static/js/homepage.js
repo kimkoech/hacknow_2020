@@ -13,7 +13,7 @@ $.each(data, function(idx, story){
   var el = document.createElement('div');
   el.className = 'marker';
   var tooltip = `<div class='tooltip'><h1>${story.name}</h1><p>${story.story}</p>
-  <a href='/post/${idx}' class='tooltip-link'>Read More</a></div>`
+  <a href='/post/${idx}' class='tooltip-link' style="color:white; border-color:white">Read More</a></div>`
   var marker = new mapboxgl.Marker(el)
     .setLngLat([story.lat, story.long])
     .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
@@ -35,7 +35,7 @@ $.each(data, function(idx, story){
     popup.remove();
   });
   markerDiv.addEventListener('click', () => map.flyTo({ center: [story.lat, story.long], zoom: 12}));
-  document.addEventListener('keypress', () => map.flyTo({ center: [story.lat, story.long], zoom: 3}));
+  document.addEventListener('keypress', () => map.flyTo({ center: [story.lat, story.long], zoom: 2}));
 })
 
 // const marker = new mapboxgl.Marker({/* options */});

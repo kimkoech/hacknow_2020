@@ -42,11 +42,13 @@ def newPost():
         lastName = request.form['lname']
         category = request.form['category']
         story = request.form['message']
+        title = request.form['title']
         story_json = {"name": firstName + " " + lastName,
         "lat": lat,"long": long,
         "story": story,
         "category": category,
-        "timestamp": str(datetime.now())}
+        "timestamp": str(datetime.now()),
+        "title" : title}
         # show post
         post_id = DB.post_story(story_json)
         data = DB.get_story(post_id)
