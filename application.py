@@ -2,6 +2,7 @@
 from flask import Flask, jsonify, request, render_template
 # import local modules
 import database_interface as DB
+import json
 
 # instatiate flask
 app = Flask(__name__)
@@ -14,7 +15,9 @@ def home():
 # display a post
 @app.route('/post/<post_id>')
 def displayPost(post_id):
-    return render_template('post.html', post_data=DB.get_story(post_id))
+    data = DB.get_story(post_id)
+    jsonData = json.loads(data)
+    return render_template('post.html', post_data=jsonData)
 
 # getting form data eg a post
 @app.route('/new_post', methods=['POST', 'GET'])
