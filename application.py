@@ -1,25 +1,21 @@
 # import modules
 from flask import Flask, jsonify, request, render_template
 # import local modules
-from database_interface import test_post, retrieve
-
-#confession = DB.get_confession
+import database_interface as DB
 
 # instatiate flask
 app = Flask(__name__)
 
-# @app.route('/')
-# def viewHTLM():
-#     return render_template('page.html')
-
 @app.route('/')
 def home():
-    return render_template('homepage.html')
+    data = DB.get_stories()
+    print(data)
+    return render_template('homepage.html', data=data)
     
 # display a post
-@app.route('/<post_id>')
+@app.route('/post/<post_id>')
 def displayPost(post_id):
-    return render_template('post.html', post_data=retrieve(post_id))
+    return render_template('post.html', post_data=DB.get_story(post_id))
 
 # getting form data eg a post
 @app.route('/new_post', methods=['POST', 'GET'])

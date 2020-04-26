@@ -1,18 +1,27 @@
 import os
 import pyrebase
 from config import config
+import json
 
 firebase = pyrebase.initialize_app(config)
 db = firebase.database()
 
-def test_post():
-	db.child("todo").child("todoex").push("YEAH")
-	todo = db.child("todo").get()
-	return todo.val()
-
-
 # Function to add data to database
-def add_data():
+
+# post request
+def post_story(story):
+	result = db.child("story").push(story)
+	return result
+# get request
+def get_stories():
+	data = db.child("story").get()
+	return json.dumps(data.val())
+def get_story(id):
+	data = db.child("story").child(id).get()
+	return json.dumps(data.val())
+
+if __name__ == '__main__':
+	# add_data()
 	story = {
 		"name": "Dong Hur",
 		"lat": 0,
@@ -21,17 +30,5 @@ def add_data():
 		"category": "physician",
 		"timestamp": "4-25-2020"
 	}
-	db.child("story").push(story)
-	return "To do"
-
-
-# Function to remove data from database
-def remove_data():
-	return "To do"
-
-# Function to retrieve data from database
-def retrieve(post_id):
-	return "To do"
-
-if __name__ == '__main__':
-	add_data()
+	data = post_story(story)
+	print(data)
