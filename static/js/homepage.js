@@ -40,8 +40,8 @@ $.each(data, function(idx, story){
     }
     popup.remove();
   });
-  markerDiv.addEventListener('click', () => map.flyTo({ center: [story.lat, story.long], zoom: 12}));
-  document.addEventListener('keypress', () => map.flyTo({ center: [story.lat, story.long], zoom: 2}));
+  markerDiv.addEventListener('click', () => map.flyTo({ center: [story.long, story.lat], zoom: 12}));
+  document.addEventListener('keypress', () => map.flyTo({ center: [story.long, story.lat], zoom: 2}));
 })
 
 var ran = sessionStorage.getItem("ranIntro")
