@@ -22,8 +22,8 @@ body {
 .greenmarker {
   background-image: url('img/green-dot.png');
   background-size: cover;
-  width: 11px;
-  height: 11px;
+  width: 13px;
+  height: 13px;
   border-radius: 90%;
   cursor: pointer;
 }
@@ -38,8 +38,8 @@ body {
 .bluemarker {
   background-image: url('img/blue-dot.png');
   background-size: cover;
-  width: 11px;
-  height: 11px;
+  width: 10px;
+  height: 10px;
   border-radius: 90%;
   cursor: pointer;
 }
