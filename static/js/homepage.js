@@ -12,26 +12,30 @@ $.each(data, function(idx, story){
   // create a HTML element for each feature
   var el = document.createElement('div');
   el.className = 'marker';
-  // make a marker for each feature and add to the map
-  // var popup = new mapboxgl.Popup(
-  //   {offset:[28, 0]}
-  // ).setText(
-  //   'Construction on the Washington Monument began in 1848.'
-  // );
+  var tooltip = `<div class='tooltip'><h1>${story.name}</h1><p>${story.story}</p>
+  <a href='/post/${idx}' class='tooltip-link'>Read More</a></div>`
   var marker = new mapboxgl.Marker(el)
     .setLngLat([story.lat, story.long])
     .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
-    .setHTML('<h3>' + story.name + '</h3><p>' + story.story + '</p>'))
+    .setHTML(tooltip))
     .addTo(map);
 
   var markerDiv = marker.getElement();
   var popup = marker.getPopup();
-  markerDiv.addEventListener('mouseenter', () => popup.addTo(map));
-  popup.addEventListener('mouseenter', () => popup.addTo(map));
-  markerDiv.addEventListener('mouseleave', () => popup.remove());
-  popup.addEventListener('mouseleave', () => popup.remove());
-  // markerDiv.addEventListener('click', () =>{window.location.href = "/post/"+idx});
+  document.addEventListener('mouseenter', event => {
+    if (event.target !== markerDiv && event.target !== popup) {
+      return
+    }
+    popup.addTo(map);
+  });
+  document.addEventListener('mouseleave', event => {
+    if (event.target !== markerDiv && event.target !== popup) {
+      return
+    }
+    popup.remove();
+  });
   markerDiv.addEventListener('click', () => map.flyTo({ center: [story.lat, story.long], zoom: 12}));
+  document.addEventListener('keypress', () => map.flyTo({ center: [story.lat, story.long], zoom: 3}));
 })
 
 // const marker = new mapboxgl.Marker({/* options */});
