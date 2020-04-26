@@ -21,7 +21,7 @@ $.each(data, function(idx, story){
   var tooltip = `<div class='tooltip'><h1>${story.name}</h1><p class='tooltip-paragraph'>${truncateText(story.story,250)}</p>
   <a href='/post/${idx}' class='tooltip-link'>Read More</a></div>`
   var marker = new mapboxgl.Marker(el)
-    .setLngLat([story.lat, story.long])
+    .setLngLat([story.long, story.lat])
     .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
     .setHTML(tooltip))
     .addTo(map);
@@ -49,7 +49,7 @@ if (!ran) {
   sessionStorage.setItem("ranIntro", "true");
   // creating intro slide
   var intro = document.createElement("div");
-  var content = `<h1>Coronavirus Stories</h1><p>Coronavirus has affected the lives of many people around the world. However, everyone has a different story to tell. It is important to tell how COVID has changed your life to inform the public better that this pandemic is real. Sometimes it may be hard to tell when you are inside all day, but by hearing the stories of others, we can getter a better sense of the severity of the situation. This website serves as your platform to share your side of the story to other people and the future generation.</p><p>Please wash your hands, practice social distancing, and stay at home!</p><p style="text-align:center;">Thank you and stay safe!</p><button id='intro-button' onclick='closeIntro()'>&#10004;</button>`
+  var content = `<h1>Coronavirus Stories</h1><p>Coronavirus has affected the lives of many people around the world. However, everyone has a different story to tell. It is important to tell how COVID has changed your life to inform the public better that this pandemic is real. Sometimes it may be hard to tell when you are inside all day, but by hearing the stories of others, we can get a better sense of the severity of the situation. This website serves as your platform to share your side of the story to other people and the future generation.</p><p>Please wash your hands, practice social distancing, and stay at home!</p><p style="text-align:center;">Thank you and stay safe!</p><button id='intro-button' onclick='closeIntro()'>&#10004;</button>`
   intro.innerHTML = content;
   intro.className = "intro";
   var bodyEle = document.getElementById("intro-container");
