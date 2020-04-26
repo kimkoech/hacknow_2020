@@ -584,6 +584,8 @@ input, select, textarea {
 		border: solid 1px #ffffff;
 		margin-bottom: 2rem;
 		padding: 1.5em;
+		padding-bottom: 2.5em;
+		padding-top: 2em;
 	}
 
 		.box > :last-child,
@@ -1659,3 +1661,11 @@ input, select, textarea {
 		body.is-preload #footer {
 			opacity: 0;
 		}
+
+	.back_arrow {
+		color: white;
+		font-size: 30px;
+		position: absolute;
+		left: 100px;
+		top: 30px;
+	}

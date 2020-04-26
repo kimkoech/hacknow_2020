@@ -20,8 +20,20 @@
 				<!-- Header -->
 					<header id="header">
 					</header>
+			
+				<!-- Back Arrow -->
+				<!-- <a href="/" class="button primary">BACK HOME</a> -->
+				<!-- .back_arrow { -->
+					<!-- color: white;
+					font-size: 30px;
+					position: absolute;
+					left: 100px;
+					top: 30px;
+				} -->
+				<a href="\" class="button" style="left:50px; top=30px; font-size:30px; position:absolute; border-color:black;">
+					&#8678;</a>
 
-				<div class="box" style="width: 400px;">
+				<div class="box" style="width: 70%; margin-top:80px">
 						<!-- New Post-->
 							<article >
 								<h2 class="major">SHARE</h2>
@@ -36,8 +48,18 @@
 											<input type="text" name="lname" id="lname" />
 										</div>
 										<div class="field">
-											<label for="category">Category</label>
-											<input type="text" name=category id="title" />
+											<label for="title">Title</label>
+											<input type="text" name=title id="title" />
+										</div>
+										<div class="field">
+											<label for="demo-category">Category</label>
+											<select name="demo-category" id="demo-category">
+												<option value="">-</option>
+												<option value="1">Personal</option>
+												<option value="1">Family</option>
+												<option value="1">Medical</option>
+												<option value="1">Other</option>
+											</select>
 										</div>
 										<div class="field">
 											<label for="message">Story</label>
@@ -49,17 +71,13 @@
 										<li><input type="reset" value="Reset" /></li>
 									</ul>
 								</form>
-
 							</article>
 					</div>
-
-
 
 				<!-- Footer -->
 					<footer id="footer">
 						<p class="copyright">&copy; COVID-19 STORIES. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
 					</footer>
-
 			</div>
 
 		<!-- BG -->
@@ -71,7 +89,6 @@
 			<script src="/static/new_post_assets/js/breakpoints.min.js"></script>
 			<script src="/static/new_post_assets/js/util.js"></script>
 			<script src="/static/new_post_assets/js/main.js"></script>
-			
-
+		
 	</body>
 </html>
