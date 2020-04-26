@@ -28,6 +28,7 @@ $.each(data, function(idx, story){
   var popup = marker.getPopup();
   markerDiv.addEventListener('mouseenter', () => popup.addTo(map));
   markerDiv.addEventListener('mouseleave', () => popup.remove());
+  markerDiv.addEventListener('click', () =>{window.location.href = "/post/"+idx});
 })
 
 // const marker = new mapboxgl.Marker({/* options */});
